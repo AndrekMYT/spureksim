@@ -35,11 +35,11 @@ if Gracz == 'Korwin' or Gracz == 'JKM':
             dmgp = random.randint(1,20)
             print('SUGAR')
         elif z2 >= z1:
-            print ('Spurek atakuje')
+            print ('Korwin attacks')
             hpp = hpp - dmgs
             z1 = 1
             z2 = 0
-            print(f'Korwin still has{hpp} hp')
+            print(f'Korwin still has {hpp} hp')
             time.sleep(0.1)
             print(' s - stay and heal, f - fight')
             wybur = input('What do you want to do?')
@@ -50,6 +50,42 @@ if Gracz == 'Korwin' or Gracz == 'JKM':
     else:
         print('Gays won :c')
         print(f'If not Korwin\'s death he would win the game with {pktg} points')
+elif Gracz == 'amogus' or Gracz == 'Impostor' or Gracz == 'Imposter':
+    dmgs = random.randint(1,20)
+    dmgp = random.randint(1,20)
+    while hpp > 0 and hps > 0:
+        if z1 >= z2 and wybur == 'f':
+            print (f'Impostor attacks')
+            hps = hps - dmgp
+            z1 = 0
+            z2 = 1
+            pktg = pktg + 1
+            if hps >0:
+                print(f'Crewmates still have {hps} hp')
+        elif z1 >= z2 and wybur == 's':
+            z1 = 0
+            z2 = 1
+            pktg = pktg + 1
+            hpp = hpp + dmgs
+            dmgs = random.randint(1,20)
+            dmgp = random.randint(1,20)
+            print('Crewmate Killed')
+        elif z2 >= z1:
+            print ('Crewmates attack')
+            hpp = hpp - dmgs
+            z1 = 1
+            z2 = 0
+            print(f'Impostor still has {hpp} hp')
+            time.sleep(0.1)
+            print(' s - stay and heal, f - fight')
+            wybur = input('What do you want to do?')
+        time.sleep(0.1)
+    if hpp > hps:
+        print(F'Impostor wins!')
+        print(f'Impostor won the game with {pktg} points. GG!')
+    else:
+        print('Crewmates won SUS')
+        print(f'If not Imposter\'s death he would win the game with {pktg} points')
 else:
     while hpp > 0 and hps > 0:
         dmgs = random.randint(1,20)
