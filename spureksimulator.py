@@ -1,7 +1,7 @@
 import random
 import time
 
-Gracz = input('Twoje imie')
+Gracz = input('Your name:')
 
 hpp = 100
 hps = 100
@@ -10,105 +10,80 @@ dmgp = random.randint(1,20)
 z1 = 1
 z2 = 0
 
-print('witamy w grze o Pani Spurek!')
+print('Welcome to the game about a Polish politician "Mrs. Spurek"!')
 pktg = 1
 print(' s - stay and heal, f - fight')
-wybur = input('Co chcesz zrobic w pierwszej turze?')
+wybur = input('What do you want to do in your first turn?')
 if Gracz == 'Korwin' or Gracz == 'JKM':
-    while hpp and hps > 0:
+    dmgs = random.randint(1,20)
+    dmgp = random.randint(1,20)
+    while hpp > 0 and hps > 0:
         if z1 >= z2 and wybur == 'f':
-            print (f'Korwin atakuje')
+            print (f'Korwin attacks')
             hps = hps - dmgp
             z1 = 0
             z2 = 1
-            print(f' Tfu! geje mają jeszcze {hps} hp')
+            pktg = pktg + 1
+            if hps >0:
+                print(f'Gays still have {hps} hp')
         elif z1 >= z2 and wybur == 's':
             z1 = 0
             z2 = 1
             pktg = pktg + 1
             hpp = hpp + dmgs
-            print('Cukier')
-        elif z2 >= z1:
-            print ('Tfu! geje atakują')
-            hpp = hpp - dmgs
-            z1 = 1
-            z2 = 0
-            print(f'Korwin ma jeszcze {hpp} hp')
-            time.sleep(1)
-            print(' s - stay and heal, f - fight')
-            wybur = input('Co chcesz zrobic kucu?')           
-        dmgs = random.randint(1,20)
-        dmgp = random.randint(1,20)
-        time.sleep(1)
-    if hpp > hps:
-        print(F'Korwin Wygrywa')
-        print(f'Korwin ukonczył grę z {pktg} punktami. Kolejny lewak zmasakrowany!')
-    else:
-        print('Tfu!geje wygrywają ')
-        print(f'Gdyby nie sen Korwin ukończyłby/a grę z {pktg} punktami')
-elif Gracz == 'Admin' or Gracz == 'Administrator':
-    while hpp and hps > 0:
-        if z1 >= z2 and wybur == 'f':
-            print (f'Admin atakuje')
-            hps = hps - dmgp
-            z1 = 0
-            z2 = 1
-            print(f'nony mają jeszcze {hps} hp')
-        elif z1 >= z2 and wybur == 's':
-            z1 = 0
-            z2 = 1
-            pktg = pktg + 1
-            hpp = hpp + dmgs
-            print('BAN!')
-        elif z2 >= z1:
-            print ('nony  atakują')
-            hpp = hpp - dmgs
-            z1 = 1
-            z2 = 0
-            print(f'Admini mają jeszcze {hpp} hp')
-            time.sleep(1)
-            print(' s - stay and heal, f - fight')
-            wybur = input('Co chcesz zrobic Adminie?')           
-        dmgs = random.randint(1,20)
-        dmgp = random.randint(1,20)
-        time.sleep(1)
-    if hpp > hps:
-        print(F'Admini wygrywają!')
-        print(f'Admini ukonczyli grę z {pktg} punktami. Kolejny non zbanowany!')
-    else:
-        print('nony wygrywają ')
-        print(f'Gdyby nie tłum nonów Admini ukończyli grę z {pktg} punktami')
-else:
-    while hpp and hps > 0:
-        if z1 >= z2 and wybur == 'f':
-            print (f'{Gracz} atakuje')
-            hps = hps - dmgp
-            z1 = 0
-            z2 = 1
-            print(f' Spurek ma jeszcze {hps} hp')
-        elif z1 >= z2 and wybur == 's':
-            z1 = 0
-            z2 = 1
-            pktg = pktg + 1
-            hpp = hpp + dmgs
-            print('Kosiniak Kamysz mode on widze')
+            dmgs = random.randint(1,20)
+            dmgp = random.randint(1,20)
+            print('SUGAR')
         elif z2 >= z1:
             print ('Spurek atakuje')
             hpp = hpp - dmgs
             z1 = 1
             z2 = 0
-            print(f'{Gracz} ma jeszcze {hpp} hp')
-            time.sleep(1)
+            print(f'Korwin still has{hpp} hp')
+            time.sleep(0.1)
             print(' s - stay and heal, f - fight')
-            wybur = input('Co chcesz zrobic?')
-
+            wybur = input('What do you want to do?')
+        time.sleep(0.1)
+    if hpp > hps:
+        print(F'Korwin wins!')
+        print(f'Korwin won the game with {pktg} points. GG!')
+    else:
+        print('Gays won :c')
+        print(f'If not Korwin\'s death he would win the game with {pktg} points')
+else:
+    while hpp > 0 and hps > 0:
         dmgs = random.randint(1,20)
         dmgp = random.randint(1,20)
-        time.sleep(1)
+        if z1 >= z2 and wybur == 'f':
+            print (f'{Gracz} attacks')
+            hps = hps - dmgp
+            z1 = 0
+            z2 = 1
+            pktg = pktg + 1
+            if hps > 0:
+                print(f' Spurek still has {hps} hp')
+        elif z1 >= z2 and wybur == 's':
+            z1 = 0
+            z2 = 1
+            pktg = pktg + 1
+            hpp = hpp + dmgs
+            dmgs = random.randint(1,20)
+            dmgp = random.randint(1,20)
+            print('Kosiniak Kamysz mode on I see')
+        elif z2 >= z1:
+            print ('Spurek attacks')
+            hpp = hpp - dmgs
+            z1 = 1
+            z2 = 0
+            if hpp > 0:
+                print(f'{Gracz} still has {hpp} hp')
+            time.sleep(0.1)
+            print(' s - stay and heal, f - fight')
+            wybur = input('What do you want to do?')
+        time.sleep(0.1)
     if hpp > hps:
-        print(F'{Gracz} Wygrywa')
-        print(f'{Gracz} ukonczył grę z {pktg} punktami. GG!')
+        print(f'{Gracz} wins the game with {pktg} points. GG!')
     else:
-        print('Spurek wygrywa')
-        print(f'Gdyby nie smierć {Gracz} ukończyłby/a grę z {pktg} punktami')
+        print('Spurek wins')
+        print(f'If not his death {Gracz} would win game with {pktg} points')
     
