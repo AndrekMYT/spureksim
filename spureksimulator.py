@@ -16,7 +16,6 @@ print('witamy w grze o Pani Spurek!!')
 pktg = 1
 print(' s - stay and heal, f - fight')
 wybur = input('Co chcesz zrobic w pierwszej turze?')
-
 if Gracz == 'Korwin' or Gracz == 'JKM':
     while hpp and hps > 0:
         if z1 >= z2 and wybur == 'f':
