@@ -11,8 +11,6 @@ z1 = 1
 z2 = 0
 
 print('witamy w grze o Pani Spurek!!')
-
-
 pktg = 1
 print(' s - stay and heal, f - fight')
 wybur = input('Co chcesz zrobic w pierwszej turze?')
