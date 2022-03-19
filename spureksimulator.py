@@ -1,7 +1,7 @@
 import random
 import time
 
-Gracz = input('Your name:')
+Gamer = input('Your name:')
 
 hpp = 100
 hps = 100
@@ -12,28 +12,39 @@ z2 = 0
 
 print('Welcome to the game about a Polish politician "Mrs. Spurek"!')
 pktg = 1
-print(' s - stay and heal, f - fight')
-wybur = input('What do you want to do in your first turn?')
-if Gracz == 'Korwin' or Gracz == 'JKM':
+print('h - heal (-1 point), f - fight')
+choice = input('What do you want to do in your first turn? ')
+if Gamer == 'Korwin' or Gamer == 'JKM':
     dmgs = random.randint(1,20)
     dmgp = random.randint(1,20)
     while hpp > 0 and hps > 0:
-        if z1 >= z2 and wybur == 'f':
-            print (f'Korwin attacks')
+        if z1 >= z2 and choice == 'f':
+            print ('Korwin attacks')
             hps = hps - dmgp
             z1 = 0
             z2 = 1
-            pktg = pktg + 1
+            pktg +=1
             if hps >0:
                 print(f'Gays still have {hps} hp')
-        elif z1 >= z2 and wybur == 's':
+        elif z1 >= z2 and choice == 'h':
+            if pktg > 0:
+                z1 = 0
+                z2 = 1
+                pktg -=1
+                hpp = hpp + dmgs
+                dmgs = random.randint(1,20)
+                dmgp = random.randint(1,20)
+                print('SUGAR')
             z1 = 0
             z2 = 1
-            pktg = pktg + 1
-            hpp = hpp + dmgs
-            dmgs = random.randint(1,20)
-            dmgp = random.randint(1,20)
-            print('SUGAR')
+        elif z1 >= z2 and choice != 'f' and choice != 'h':
+            print ('Korwin attacks')
+            hps = hps - dmgp
+            z1 = 0
+            z2 = 1
+            pktg +=1
+            if hps >0:
+                print(f'Gays still have {hps} hp')
         elif z2 >= z1:
             print ('Korwin attacks')
             hpp = hpp - dmgs
@@ -41,8 +52,9 @@ if Gracz == 'Korwin' or Gracz == 'JKM':
             z2 = 0
             print(f'Korwin still has {hpp} hp')
             time.sleep(0.1)
-            print(' s - stay and heal, f - fight')
-            wybur = input('What do you want to do?')
+            print(' h - heal (-1 point), f - fight')
+            print(f'You have {pktg} points')
+            choice = input('What do you want to do? ')
         time.sleep(0.1)
     if hpp > hps:
         print(F'Korwin wins!')
@@ -50,35 +62,49 @@ if Gracz == 'Korwin' or Gracz == 'JKM':
     else:
         print('Gays won :c')
         print(f'If not Korwin\'s death he would win the game with {pktg} points')
-elif Gracz == 'amogus' or Gracz == 'Impostor' or Gracz == 'Imposter':
+elif Gamer == 'amogus' or Gamer == 'Impostor' or Gamer == 'Imposter':
     dmgs = random.randint(1,20)
     dmgp = random.randint(1,20)
     while hpp > 0 and hps > 0:
-        if z1 >= z2 and wybur == 'f':
-            print (f'Impostor attacks')
+        if z1 >= z2 and choice == 'f':
+            print ('Impostor attacks')
             hps = hps - dmgp
             z1 = 0
             z2 = 1
-            pktg = pktg + 1
+            pktg +=1
             if hps >0:
                 print(f'Crewmates still have {hps} hp')
-        elif z1 >= z2 and wybur == 's':
+
+        elif z1 >= z2 and choice == 'h':
+            if pktg > 0:
+                z1 = 0
+                z2 = 1
+                pktg -=1
+                hpp = hpp + dmgs
+                dmgs = random.randint(1,20)
+                dmgp = random.randint(1,20)
+                print('Crewmate Killed')
             z1 = 0
             z2 = 1
-            pktg = pktg + 1
-            hpp = hpp + dmgs
-            dmgs = random.randint(1,20)
-            dmgp = random.randint(1,20)
-            print('Crewmate Killed')
+        elif z1 >= z2 and choice != 'f' and choice != 'h':
+            print ('Impostor attacks')
+            hps = hps - dmgp
+            z1 = 0
+            z2 = 1
+            pktg +=1
+            if hps >0:
+                print(f'Crewmates still have {hps} hp')
         elif z2 >= z1:
             print ('Crewmates attack')
             hpp = hpp - dmgs
             z1 = 1
             z2 = 0
-            print(f'Impostor still has {hpp} hp')
+            if hpp > 0:
+                print(f'Impostor still has {hpp} hp')
             time.sleep(0.1)
-            print(' s - stay and heal, f - fight')
-            wybur = input('What do you want to do?')
+            print('  h - heal (-1 point), f - fight')
+            print(f'You have {pktg} points')
+            choice = input('What do you want to do? ')
         time.sleep(0.1)
     if hpp > hps:
         print(F'Impostor wins!')
@@ -90,36 +116,50 @@ else:
     while hpp > 0 and hps > 0:
         dmgs = random.randint(1,20)
         dmgp = random.randint(1,20)
-        if z1 >= z2 and wybur == 'f':
-            print (f'{Gracz} attacks')
+        if z1 >= z2 and choice == 'f':
+            print (f'{Gamer} attacks')
             hps = hps - dmgp
             z1 = 0
             z2 = 1
-            pktg = pktg + 1
+            pktg +=1
             if hps > 0:
                 print(f' Spurek still has {hps} hp')
-        elif z1 >= z2 and wybur == 's':
+        elif z1 >= z2 and choice == 'h':
+            if pktg > 0:
+                z1 = 0
+                z2 = 1
+                pktg -=1
+                hpp = hpp + dmgs
+                dmgs = random.randint(1,20)
+                dmgp = random.randint(1,20)
+                print('Kosiniak Kamysz mode on I see')
             z1 = 0
             z2 = 1
-            pktg = pktg + 1
-            hpp = hpp + dmgs
-            dmgs = random.randint(1,20)
-            dmgp = random.randint(1,20)
-            print('Kosiniak Kamysz mode on I see')
+        elif z2 >= z1:
+            print (f'{Gamer} attacks')
+            hpp = hpp - dmgs
+            z1 = 1
+            z2 = 0
+            print(f'Spurek still has {hps} hp')
+            time.sleep(0.1)
+            print(' h - heal (-1 point), f - fight')
+            print(f'You have {pktg} points')
+            choice = input('What do you want to do? ')
         elif z2 >= z1:
             print ('Spurek attacks')
             hpp = hpp - dmgs
             z1 = 1
             z2 = 0
             if hpp > 0:
-                print(f'{Gracz} still has {hpp} hp')
+                print(f'{Gamer} still has {hpp} hp')
             time.sleep(0.1)
-            print(' s - stay and heal, f - fight')
-            wybur = input('What do you want to do?')
+            print(' h - heal (-1 point), f - fight')
+            print(f'You have {pktg} points')
+            choice = input('What do you want to do? ')
         time.sleep(0.1)
     if hpp > hps:
-        print(f'{Gracz} wins the game with {pktg} points. GG!')
+        print(f'{Gamer} wins the game with {pktg} points. GG!')
     else:
         print('Spurek wins')
-        print(f'If not his death {Gracz} would win game with {pktg} points')
+        print(f'If not his death {Gamer} would win game with {pktg} points')
     
